@@ -45,8 +45,6 @@ public class DrawThread extends Thread {
         width = stat.width;
         height = stat.height;
         map = stat.map;
-         //this.player = player;
-         //this.map = map;
         gameover = stat.gameover;
         level = stat.door;
     }

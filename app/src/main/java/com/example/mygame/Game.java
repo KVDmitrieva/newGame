@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -36,8 +37,7 @@ public class Game extends AppCompatActivity implements JoyStickListener{
     Context context;
     AlertDialog.Builder ad;
     AlertDialog adTrueDialog;
-    FirebaseDatabase db;
-    DatabaseReference ref, level;
+
     @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +46,7 @@ public class Game extends AppCompatActivity implements JoyStickListener{
 
         context = this;
 
-           // db = FirebaseDatabase.getInstance();
-           // ref = db.getReference("enemies");
-           //// level = db.getReference("level");
+
 
 
 
@@ -90,9 +88,6 @@ public class Game extends AppCompatActivity implements JoyStickListener{
         zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-               // ref.push().setValue(enemies);
-                //level.push().setValue(dungeon);
                 Intent i = new Intent(Game.this,MainActivity.class);
                 startActivity(i);
             }
@@ -170,12 +165,11 @@ public class Game extends AppCompatActivity implements JoyStickListener{
     @Override
     public void onMove(JoyStick joyStick, double angle, double power, int direction) {
         joyStick.setButtonColor(Color.parseColor("#55ffffff"));
-        //joyStick.setButtonColor(getColor(R.color.joystick));
+
         dir = joyStick.getDirection();
         if (dir==-1) joyStick.setButtonColor(Color.TRANSPARENT);
         if(intersect==1){
             intersect =0;
-           // ad.show();
             adTrueDialog = ad.show();
         }
 

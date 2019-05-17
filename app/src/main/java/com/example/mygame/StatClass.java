@@ -10,26 +10,12 @@ import android.view.WindowManager;
 
 class StatClass {
 
-     static int score = 0;/*
-    static int dir = -1;
-    static int a = 0;
-    static  int intersect = 0;
-    static boolean canceled = false;
-    static int enemies = 0;
-    static int dungeon = 0;
-
-    static final Object playerLock = new Object();
-    static final Object enemyLock = new Object();
-    static final Object mapLock = new Object();
-
-*/
+     static int score = 0;
      int width, height;
      Map map;
      Character player;
      Bitmap gameover, door, health, def, attack;
 
-    // int[] sd1={7, 5, 4, 100, 2, 6, 10, 2};
-       // int[] sd2={7, 5, 3, 150, 2, 10, 10, 2};
 
     StatClass(Context context) {
         int size; float coef;
@@ -42,9 +28,6 @@ class StatClass {
         width = displaymetrics.widthPixels;
         height = displaymetrics.heightPixels;
 
-        //width = display.getWidth();
-        //height = display.getHeight();
-        //coef = (float) (width * height) / (1700 * 900);
         coef = 1.5f*((float) (width * height) / (1500 * 2700));
         size = width/5;
 

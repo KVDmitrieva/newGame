@@ -5,12 +5,12 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 
 class Sprite {
-    private Bitmap bitmap;// Картинка с анимационной последовательностью
-    private Rect sourceRect;// Прямоугольная область в bitmap, которую нужно нарисовать
-    private int frameNr;// Число кадров в анимации
-    int currentFrame;// Текущий кадр
-    private long frameTicker;// время обновления последнего кадра
-    private int framePeriod;// сколько миллисекунд должно пройти перед сменой кадра (1000/fps)
+    private Bitmap bitmap;
+    private Rect sourceRect;
+    private int frameNr;
+    int currentFrame;
+    private long frameTicker;
+    private int framePeriod;
 
      int spriteWidth;
      int spriteHeight;

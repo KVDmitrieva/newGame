@@ -8,21 +8,16 @@ import android.view.SurfaceView;
 
 class DrawView extends SurfaceView implements SurfaceHolder.Callback {
 
-     public static int s;
+
      private DrawThread drawThread;
 
-     private StatClass stat;
-     Character player;
-     Map map;
+
 
 
 
      DrawView(Context context) {
         super(context);
         getHolder().addCallback(this);
-        stat = new StatClass(context);
-        map = stat.map;
-        player = stat.player;
 
     }
 

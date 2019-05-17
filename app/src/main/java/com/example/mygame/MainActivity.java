@@ -1,7 +1,9 @@
 package com.example.mygame;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -15,9 +17,11 @@ import android.widget.RelativeLayout;
 
 import static com.example.mygame.DrawThread.dungeon;
 import static com.example.mygame.DrawThread.enemies;
+import static com.example.mygame.StatClass.score;
 
 
 public class MainActivity extends AppCompatActivity {
+
     @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,28 +52,36 @@ public class MainActivity extends AppCompatActivity {
         zero.setText(R.string.play);
         zero.setTextSize(15);
         zero.setTextColor(Color.WHITE);
+
+
         RelativeLayout.LayoutParams b1;
         if(stat.height<stat.width){
             b1 = new RelativeLayout.LayoutParams(stat.width/2, stat.height/8);
-            b1.topMargin = stat.height/2-stat.height/16+stat.height/8;}
+            b1.topMargin = stat.height/2-stat.height/16+stat.height/8;
+           }
         else {
             b1 = new RelativeLayout.LayoutParams(stat.width/2, stat.height/15);
             b1.topMargin = stat.height/2-stat.height/30+stat.height/16;
-        }
+             }
         b1.leftMargin = stat.width/2-stat.width/4;
-        zero.setLayoutParams(b1);
 
+
+
+        zero.setLayoutParams(b1);
 
         zero.setOnClickListener(new View.OnClickListener(){
             @Override
             @RequiresApi(api = Build.VERSION_CODES.M)
             public void onClick(View v){
+                score = 0;
                 enemies = 0;
                 dungeon = 0;
                 Intent i = new Intent(MainActivity.this, Game.class);
                 startActivity(i);
             }
         });
+
+
         addContentView(zero,b1);
         addContentView(title, logo);
 
