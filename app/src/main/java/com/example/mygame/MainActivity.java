@@ -22,6 +22,8 @@ import static com.example.mygame.StatClass.score;
 
 public class MainActivity extends AppCompatActivity {
 
+    DBHelper dbHelper;
+
     @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,21 +55,36 @@ public class MainActivity extends AppCompatActivity {
         zero.setTextSize(15);
         zero.setTextColor(Color.WHITE);
 
+        Button scored = new Button(this);
+        scored.setId(13);
+        scored.setBackgroundResource(R.drawable.but);
+        scored.setText("stat");
+        scored.setTextSize(15);
+        scored.setTextColor(Color.WHITE);
 
-        RelativeLayout.LayoutParams b1;
+
+        RelativeLayout.LayoutParams b1, b2;
         if(stat.height<stat.width){
             b1 = new RelativeLayout.LayoutParams(stat.width/2, stat.height/8);
             b1.topMargin = stat.height/2-stat.height/16+stat.height/8;
-           }
+            b2 = new RelativeLayout.LayoutParams(stat.width/2, stat.height/8);
+            b2.topMargin = stat.height/2-stat.height/16+stat.height/4+50;
+        }
         else {
             b1 = new RelativeLayout.LayoutParams(stat.width/2, stat.height/15);
             b1.topMargin = stat.height/2-stat.height/30+stat.height/16;
-             }
+            b2 = new RelativeLayout.LayoutParams(stat.width/2, stat.height/15);
+            b2.topMargin = stat.height/2-stat.height/30+stat.height/8+50;
+        }
         b1.leftMargin = stat.width/2-stat.width/4;
-
+        b2.leftMargin = stat.width/2-stat.width/4;
 
 
         zero.setLayoutParams(b1);
+        scored.setLayoutParams(b2);
+
+        dbHelper = new DBHelper(this);
+
 
         zero.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -81,6 +98,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        scored.setOnClickListener(new View.OnClickListener(){
+            @Override
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            public void onClick(View v){
+                Intent c = new Intent(MainActivity.this, Statistic.class);
+                startActivity(c);
+            }
+        });
+
+        addContentView(scored, b2);
+
+        if(score!=0){
+            SQLiteDatabase database = dbHelper.getWritableDatabase();
+            dbHelper.pushData(database);
+            database.close();
+        }
 
         addContentView(zero,b1);
         addContentView(title, logo);
