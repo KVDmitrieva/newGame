@@ -51,16 +51,19 @@ public class Statistic extends AppCompatActivity {
         Button back = findViewById(R.id.back);
 
             LinearLayout linearLayout = findViewById(R.id.linear);
-            RelativeLayout.LayoutParams b1;
+            RelativeLayout.LayoutParams b1, b2;
             if(stat.height<stat.width){
                 b1 = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 3*height/4);
                 b1.topMargin = 0;
-                b1.leftMargin = 0;}
+                b1.leftMargin = 0;
+            }
             else {
                 b1 = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, height/2);
                 b1.topMargin = 0;
                 b1.leftMargin = 0;
             }
+            b2 = new RelativeLayout.LayoutParams(back.getWidth(), back.getHeight());
+            b2.leftMargin = width/2 - back.getWidth()/2;
 
 
             back.setOnClickListener(new View.OnClickListener(){
