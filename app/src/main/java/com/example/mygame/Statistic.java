@@ -65,7 +65,6 @@ public class Statistic extends AppCompatActivity {
             b2 = new RelativeLayout.LayoutParams(back.getWidth(), back.getHeight());
             b2.leftMargin = width/2 - back.getWidth()/2;
 
-
             back.setOnClickListener(new View.OnClickListener(){
                 @Override
                 @RequiresApi(api = Build.VERSION_CODES.M)

@@ -147,7 +147,7 @@ public class DrawThread extends Thread {
         if (e.currentFrame == 2){
             e.health = e.health - player.attack;}
         if(player.currentFrame ==3 )
-            player.health = player.health - (int)(e.attack*(1-0.01f*player.def));
+            player.health = player.health +(int)(player.def*0.1f) - (e.attack);
 
     }
 
